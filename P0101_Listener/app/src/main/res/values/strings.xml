@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">P0101_Listener</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="text1">Нажата кнопка 1</string>
+    <string name="text2">Нажата кнопка 2</string>
+    <string name="text3">Нажата кнопка 3</string>
+
+    <string name="txtBtn">Нажат текст</string>
+
+    <string name="btn1">1</string>
+    <string name="btn2">2</string>
+    <string name="btn3">3</string>
+</resources>
