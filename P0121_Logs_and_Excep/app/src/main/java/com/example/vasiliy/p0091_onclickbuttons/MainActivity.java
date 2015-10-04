@@ -1,33 +1,49 @@
-package com.example.vasiliy.p0111_resvalues;
+package com.example.vasiliy.p0091_onclickbuttons;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    TextView txtView;
+    Button  btn1,
+            btn2,
+            btn3;
+
+    private static final String TAG = "myLogs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        final ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_black_48dp));
+        Log.d(TAG, "Находим View-элементы");
+        txtView = (TextView) findViewById(R.id.textView);
+        btn1 = (Button) findViewById(R.id.btn1);
+        btn2 = (Button) findViewById(R.id.btn2);
+        btn3 = (Button) findViewById(R.id.btn3);
 
-        Button btn = (Button) findViewById(R.id.button);
 
-        View.OnClickListener clickBtn = new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_camera_alt_black_48dp));
+                Log.i(TAG, "Нажимаем кнопку 1");
+                txtView.setText("Нажата кнопка 1");
             }
-        };
+        });
 
-        btn.setOnClickListener(clickBtn);
+        btn2.setOnClickListener(this);
+
+    }
+
+    public void clickButton3(View v) {
+        txtView.setText("Нажата кнопка 3");
     }
 
     @Override
@@ -50,5 +66,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.e(TAG,  "Нажимаем кнопку 2");
+        txtView.setText("Нажата кнопка 2");
     }
 }
