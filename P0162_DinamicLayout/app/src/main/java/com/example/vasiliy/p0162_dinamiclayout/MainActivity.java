@@ -1,7 +1,7 @@
 package com.example.vasiliy.p0162_dinamiclayout;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout llMain;
-    RadioGroup rgGravity;
+    RadioGroup rgGravity,
+               rgTypeView;
     EditText etName;
     Button btnCreate,
            btnClear;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         llMain = (LinearLayout) findViewById(R.id.llMain);
         rgGravity = (RadioGroup) findViewById(R.id.rgGravity);
+        rgTypeView = (RadioGroup) findViewById(R.id.rgTypeView);
         etName = (EditText) findViewById(R.id.etName);
 
         btnCreate = (Button) findViewById(R.id.btnCreate);
@@ -56,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()) {
             case R.id.btnCreate:
                 LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                int btnGravity;
+                int btnGravity = Gravity.LEFT;
                 switch (rgGravity.getCheckedRadioButtonId()) {
                     case R.id.rbLeft:
                         btnGravity = Gravity.LEFT;
@@ -81,12 +82,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 lParams.gravity = btnGravity;
 
-                Button btnNew = new Button(this);
-                btnNew.setText(etName.getText().toString());
-                llMain.addView(btnNew, lParams);
+                switch(rgTypeView.getCheckedRadioButtonId()) {
+                    case R.id.rbButton:
+                        Button btnNew = new Button(this);
+                        btnNew.setText(etName.getText().toString());
+                        llMain.addView(btnNew, lParams);
+                        break;
+                    case R.id.rbEditText:
+                        EditText etNew = new EditText(this);
+                        etNew.setText(etName.getText().toString());
+                        llMain.addView(etNew, lParams);
+                        break;
+                }
 
                 break;
 
+            case R.id.btnClear:
+                llMain.removeAllViews();
+                Toast.makeText(this, "Удалено", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }
