@@ -1,8 +1,9 @@
-package com.example.vasiliy.p0211_twoactivity;
+package com.example.vasiliy.p0241_twoactivitylifecycle;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,25 +11,57 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnActTwo,
-           btnActThree,
-           btnActFour;
+    final String TAG = "lifecycle";
+
+    Button btnGoToActTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        btnActTwo = (Button) findViewById(R.id.btnActTwo);
-        btnActTwo.setOnClickListener(this);
+        btnGoToActTwo = (Button) findViewById(R.id.button);
+        btnGoToActTwo.setOnClickListener(this);
 
-        btnActThree = (Button) findViewById(R.id.btnActThree);
-        btnActThree.setOnClickListener(this);
-
-        btnActFour = (Button) findViewById(R.id.btnActFour);
-        btnActFour.setOnClickListener(this);
-
+        Log.d(TAG, "MainActivity создано");
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "MainActivity OnRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "MainActivity onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "MainActivity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "MainActivity onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "MainActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "MainActivity onDestroy");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,23 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
-        switch (v.getId()) {
-            case R.id.btnActTwo:
-                intent = new Intent(this, ActivityTwo.class);
-                startActivity(intent);
-                break;
-            case R.id.btnActThree:
-                intent = new Intent(this, ActivityThree.class);
-                startActivity(intent);
-                break;
-            case R.id.btnActFour:
-                intent = new Intent(this, ActivityFour.class);
-                startActivity(intent);
-                break;
-            default:
-
-                break;
-        }
+        /*
+        Intent intent = new Intent(this, ActivityTwo.class);
+        startActivity(intent);
+        */
+        startActivity(new Intent(this, ActivityTwo.class));
     }
 }

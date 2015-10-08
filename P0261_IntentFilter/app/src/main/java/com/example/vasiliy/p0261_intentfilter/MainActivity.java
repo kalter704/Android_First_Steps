@@ -1,4 +1,4 @@
-package com.example.vasiliy.p0211_twoactivity;
+package com.example.vasiliy.p0261_intentfilter;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,23 +10,19 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnActTwo,
-           btnActThree,
-           btnActFour;
+    Button btnTime,
+           btnDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        btnActTwo = (Button) findViewById(R.id.btnActTwo);
-        btnActTwo.setOnClickListener(this);
+        btnTime = (Button) findViewById(R.id.btnTime);
+        btnTime.setOnClickListener(this);
 
-        btnActThree = (Button) findViewById(R.id.btnActThree);
-        btnActThree.setOnClickListener(this);
-
-        btnActFour = (Button) findViewById(R.id.btnActFour);
-        btnActFour.setOnClickListener(this);
+        btnDate = (Button) findViewById(R.id.btnDate);
+        btnDate.setOnClickListener(this);
 
     }
 
@@ -54,22 +50,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
-        switch (v.getId()) {
-            case R.id.btnActTwo:
-                intent = new Intent(this, ActivityTwo.class);
+        Intent intent;
+        switch(v.getId()) {
+            case R.id.btnTime:
+                intent = new Intent("ru.p0261.intent.action.showtime");
                 startActivity(intent);
                 break;
-            case R.id.btnActThree:
-                intent = new Intent(this, ActivityThree.class);
+            case R.id.btnDate:
+                intent = new Intent("ru.p0261.intent.action.showdate");
                 startActivity(intent);
-                break;
-            case R.id.btnActFour:
-                intent = new Intent(this, ActivityFour.class);
-                startActivity(intent);
-                break;
-            default:
-
                 break;
         }
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vasiliy.p0211_twoactivity" >
+    package="com.example.vasiliy.p0241_twoactivitylifecycle" >
 
     <application
         android:allowBackup="true"
@@ -19,18 +19,6 @@
         <activity
             android:name=".ActivityTwo"
             android:label="@string/title_activity_activity_two" >
-        </activity>
-        <activity
-            android:name=".ActivityThree"
-            android:label="@string/title_activity_activity_three" >
-        </activity>
-        <activity
-            android:name=".ActivityFour"
-            android:label="@string/title_activity_activity_four"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.vasiliy.p0211_twoactivity.MainActivity" />
         </activity>
     </application>
 

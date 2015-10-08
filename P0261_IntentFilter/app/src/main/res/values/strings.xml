@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">P0261_IntentFilter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity_time">ActivityTime</string>
+    <string name="title_activity_activity_date">Date basic</string>
+    <string name="title_activity_activity_date_ex">Date extended</string>
+</resources>
